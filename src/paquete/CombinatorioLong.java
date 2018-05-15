@@ -1,11 +1,11 @@
 package paquete;
 
-public class CombinatorioEstatico {
+public class CombinatorioLong {
 	
 	private long[][] matriz;
 	
-	public CombinatorioEstatico() {
-		int tam = 5;
+	public CombinatorioLong() {
+		int tam = 33;
 		this.matriz = new long[tam+1][tam+1];
 		this.matriz[0][0] = 1;
 		for (int i = 1; i < matriz.length; i++) {
@@ -16,17 +16,10 @@ public class CombinatorioEstatico {
 	
 	public long numero(int n, int k) {
 		
-		System.out.println("(" + n + "," + k + ")");
 		
-//		if ( k > n ) return 0;
-
-//		if( n >= 0 && k == 0 || n == k )
-//			matriz[n][0] = matriz[0][n] = 1;
-//		
-//		if( k == 1 )
-//			matriz[n-1][1] = matriz[1][n-1] = n;
+		if ( k > n ) return 0;
 		
-		if( 2 * k == n )
+		if( n == 2 * k )
 			matriz[k][k] = 2 * numero(n-1,k-1);
 		
 		if( matriz[n-k][k] == 0 ) 
@@ -50,11 +43,11 @@ public class CombinatorioEstatico {
 
 	public static void main(String[] args) {
 
-		CombinatorioEstatico c = new CombinatorioEstatico();
+		CombinatorioLong c = new CombinatorioLong();
 		
-		c.mostrar();
-		System.out.println(c.numero(6, 1));
-		c.mostrar();
+		System.out.println(c.numero(10, 11));
+//		System.out.println(c.last());
+//		c.mostrar();
 
 	}
 

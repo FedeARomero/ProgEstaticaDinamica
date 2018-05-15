@@ -45,7 +45,7 @@ public class PascalBigInteger {
 
 	public static void main(String[] args) {
 
-		int cant = 3;
+		int cant = 10;
 		PascalBigInteger p = new PascalBigInteger(cant);
 
 //		p.mostrar();

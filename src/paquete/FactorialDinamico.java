@@ -6,57 +6,38 @@ import java.util.TreeMap;
 
 public class FactorialDinamico {
 	
-	private Map<Integer, BigInteger> vector = new TreeMap<Integer, BigInteger>();
+	private Map<Integer, BigInteger> factoriales;
 
 	public FactorialDinamico() {
-		vector.put(0, new BigInteger("1"));
+		factoriales = new TreeMap<Integer, BigInteger>();
+		factoriales.put( 0, BigInteger.valueOf(1) );
 	}
 	
 	public BigInteger numero(int n) {
-		if( vector.containsKey(n) ) return vector.get(n);
+		if( factoriales.containsKey(n) ) return factoriales.get(n);
 		
-		if( n == 0 )
-			vector.put(0, new BigInteger("1"));
-		else
-			vector.put(n, numero(n-1).multiply(new BigInteger(Integer.toString(n))));
+		factoriales.put( n, numero(n-1).multiply( BigInteger.valueOf(n) ) );
 		
-		return vector.get(n);
+		return factoriales.get(n);
 	}
 	
 	public BigInteger last() {
-		return vector.get(vector.size()-1);
+		return factoriales.get(factoriales.size()-1);
 	}
 	
 	private void mostrar() {
-		System.out.println();
-		System.out.println("Factorial " + vector.size());
-		for (int numero : vector.keySet())
-			System.out.println("" + numero/10 + numero%10 + "! = " + vector.get(numero));
-//		System.out.println();
+		System.out.println("\nFactoriales (" + factoriales.size() +")");
+		for (int numero : factoriales.keySet())
+			System.out.println("" + numero + "! = " + factoriales.get(numero));
 	}
 	
 	public static void main(String[] args) {
 		FactorialDinamico f = new FactorialDinamico();
 
+		int numero = 20;
+		System.out.println(numero + "! = " + f.numero(numero));
 		f.mostrar();
-		System.out.println(f.last());
-		System.out.println( 5 + " " + f.numero( 5));
-		f.mostrar();
-		System.out.println(f.last());
-		System.out.println(15 + " " + f.numero(15));
-		f.mostrar();
-		System.out.println(f.last());
-		System.out.println(10 + " " + f.numero(10));
-		f.mostrar();
-		System.out.println(f.last());
-		System.out.println(25 + " " + f.numero(25));
-		f.mostrar();
-		System.out.println(f.last());
-		System.out.println(20 + " " + f.numero(20));
-		f.mostrar();
-		System.out.println(f.last());
-//		System.out.println(f.numero(100));
-//		f.mostrar();
+		
 	}
 
 

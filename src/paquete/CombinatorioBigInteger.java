@@ -2,12 +2,13 @@ package paquete;
 
 import java.math.BigInteger;
 
-public class CombinatorioDinamico {
+public class CombinatorioBigInteger {
 
 private BigInteger[][] matriz;
+
+	public static final int tam = 200;
 	
-	public CombinatorioDinamico() {
-		int tam = 200;
+	public CombinatorioBigInteger() {
 		this.matriz = new BigInteger[tam+1][tam+1];
 		this.matriz[0][0] = BigInteger.valueOf(1);
 	}
@@ -25,7 +26,7 @@ private BigInteger[][] matriz;
 	}
 	
 	public BigInteger last() {
-		System.out.println("C(" + 2*(matriz.length-1) + "," + (matriz.length-1) + ")");
+//		System.out.println("C(" + 2*(matriz.length-1) + "," + (matriz.length-1) + ")");
 		return numero(2*(matriz.length-1),matriz.length-1);
 	}
 	
@@ -39,12 +40,12 @@ private BigInteger[][] matriz;
 
 	public static void main(String[] args) {
 
-		CombinatorioDinamico c = new CombinatorioDinamico();
+		CombinatorioBigInteger c = new CombinatorioBigInteger();
 		
 //		c.mostrar();
-//		System.out.println(c.numero(100,50));
-		System.out.println(c.last());
-		c.mostrar();
+		System.out.println(c.numero(400,200));
+//		System.out.println(c.last());
+//		c.mostrar();
 
 	}
 
